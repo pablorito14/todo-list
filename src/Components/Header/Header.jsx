@@ -2,9 +2,9 @@ import { Box, Container, Heading } from "@chakra-ui/react"
 import '@fontsource/roboto';
 const Header = () => {
   return(
-    <Box as="header" bg='#262831' h='64px' 
+    <Box as="header" bg='todoBgHeader' h='64px' 
           display='flex' alignItems='center'
-          boxShadow='dark-lg'>
+          boxShadow='xl'>
       <Container display='flex' justifyContent='center'>
       <Heading 
           fontFamily='Roboto,sans-serif' 
@@ -12,7 +12,7 @@ const Header = () => {
           fontSize='md'
           letterSpacing='.5rem'
           textTransform='uppercase' 
-          color='#00f9b6'
+          color='todoGreen'
           
           >Just to do it</Heading>
 
