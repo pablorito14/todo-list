@@ -1,5 +1,5 @@
 import { Box, Grid, GridItem, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger, Text } from "@chakra-ui/react"
-import { motion,AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { FaCircle, FaTrash } from "react-icons/fa6"
 
 

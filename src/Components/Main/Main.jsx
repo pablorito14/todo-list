@@ -1,7 +1,6 @@
-import { Box,Button,CloseButton,Container,Flex,Grid,GridItem,Input,Link,Popover,PopoverArrow,PopoverBody,PopoverCloseButton,PopoverContent,PopoverFooter,PopoverHeader,PopoverTrigger,Portal,Text, useDisclosure, useToast } from "@chakra-ui/react"
-import { useState,useEffect, useRef, createRef } from "react";
-import { FaTrash,FaCircle } from 'react-icons/fa6';
-import { AnimatePresence, Reorder, motion, useAnimation, useDragControls } from "framer-motion";
+import { Box,Container } from "@chakra-ui/react"
+import { useState,useEffect, useRef } from "react";
+import { useAnimation } from "framer-motion";
 import { FormAddTask } from "../FormAddTask/FormAddTask";
 import { TodoList } from "../TodoList/TodoList";
 import { Clock } from "../Clock/Clock";
