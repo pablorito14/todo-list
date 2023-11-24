@@ -24,6 +24,11 @@ const shadows = {
   'todoShadow':'0px 10px 15px -2px rgba(0,0,0,0.3)'
 }
 
-const theme = extendTheme({colors,shadows})
+const config = {
+  initialColorMode:'dark',
+  useSystemColorMode:true
+}
+
+const theme = extendTheme({colors,shadows,config})
 
 export default theme;
