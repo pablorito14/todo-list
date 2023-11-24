@@ -1,16 +1,17 @@
-import { Box,Container } from "@chakra-ui/react"
+import { Box,Container, useColorMode, useColorModeValue } from "@chakra-ui/react"
 import { useState,useEffect, useRef } from "react";
 import { FormAddTask } from "../FormAddTask/FormAddTask";
 import { TodoList } from "../TodoList/TodoList";
 import { Clock } from "../Clock/Clock";
+import { FaMoon } from "react-icons/fa6";
+import { IoMoon,IoSunny } from "react-icons/io5";
 
 const Main = () => {
 
   const [tasks,setTasks ] = useState([]);
   const [updateTaskList,setUpdateTaskList] = useState(false);
+  // const [darkMode,setDarkMode] = useState(true);
   
-  const taskRef = useRef([]);
-
   useEffect(() => {
     console.log('useEffect onload')
 
@@ -67,26 +68,35 @@ const Main = () => {
     deleteTask:deleteTask
   }
 
+  const { toggleColorMode } = useColorMode();
+  const bgMain = useColorModeValue('todoLight','todoDark')
+  const bgToggleTheme = useColorModeValue('#6e6d6e30','todoGreen')
+  const iconTheme = useColorModeValue(<IoMoon />,<IoSunny />)
+
   return(
-    <Box bg='todoDark' 
-          minH='calc(100dvh - 64px)'
-          >
+    <Box bg={bgMain} minH='calc(100dvh - 64px)'>
       <Container pb={10}>
+
+        <Box display='flex' justifyContent='end' >
+          <Box mt={5} p={2} position='absolute' color='todoDark'
+              bg={bgToggleTheme} rounded='50%' onClick={toggleColorMode}>
+            {iconTheme}
+          </Box>
+        </Box>
+
         {/* <DateTime /> */}
         <Clock />
+        {/* <DateTime /> */}
 
         {/* TASKLIST */}
         <TodoList {...todoListProps} />
         {/* TASKLIST */}
 
-        <FormAddTask {...formAddTaskProps}/>
-        {/* <FormAddTask tasks={tasks} taskLength={taskLength} taskRef={taskRef} setTasks={setTasks} setTaskLength={setTaskLength} setUpdateTaskList={setUpdateTaskList}/> */}
         {/* FORMULARIO */}
-      </Container>
-      {/* <Container>
         <FormAddTask {...formAddTaskProps}/>
-      </Container> */}
-      
+        {/* FORMULARIO */}
+
+      </Container>
     </Box>
   )
 }

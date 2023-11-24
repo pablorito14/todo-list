@@ -1,4 +1,4 @@
-import {ChakraProvider, extendTheme} from '@chakra-ui/react'
+import {Box, ChakraProvider, extendTheme} from '@chakra-ui/react'
 import './App.css'
 import { Header } from './Components/Header/Header'
 import { Main } from './Components/Main/Main'
@@ -11,9 +11,12 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
+      {/* <Box bg=''> */}
       <Header />
       <Main />
       {/* <Footer /> */}
+
+      {/* </Box> */}
     </ChakraProvider>
     
   )

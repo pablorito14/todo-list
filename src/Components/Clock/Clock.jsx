@@ -1,10 +1,11 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, useColorMode } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-const Clock = () => {
+const Clock = ({darkMode}) => {
 
   const [dateNow,setTime] = useState(new Date())
-
+  const { colorMode } = useColorMode();
+  
   useEffect(() => {
     // ejecuta cada 1s el cambio de fecha dentro del dateNow
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -17,7 +18,7 @@ const Clock = () => {
   
   return(
     <Box display='flex' flexDirection='column' alignItems='center' py={10}>
-      <Text fontSize='6xl' fontWeight='300' color='todoGreen'>{time}</Text>
+      <Text fontSize='6xl' fontWeight='300' color={colorMode === 'dark' ? 'clockfontDark' : 'clockfontLight'}>{time}</Text>
       <Text color='todoGray' fontSize='md'>{date}</Text>
     </Box>
     

@@ -1,4 +1,4 @@
-import { Box, Button, CloseButton, Input, Text, useToast } from '@chakra-ui/react';
+import { Box, Button, CloseButton, Input, Text, useColorMode, useColorModeValue, useToast } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import { motion} from 'framer-motion'
 import { useRef } from 'react';
@@ -21,7 +21,6 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList}) => {
 
   const inputRef = useRef();
   const toastIdRef = useRef();
-
 
   const toast = useToast({
     position: 'bottom',
@@ -80,6 +79,9 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList}) => {
     }, 500);
   };
 
+  const bgForm=useColorModeValue('todoLight','todoDark')
+  const borderColor = useColorModeValue('gray.200','transparent')
+
   return(
     <Box 
           position='fixed' bottom='0' left='0'  w='full' bg='todo-Dark'>
@@ -95,18 +97,22 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList}) => {
           <form 
           style={{width:'100%'}} 
           onSubmit={handleSubmit} noValidate>
-            <Box display='flex' flexDirection='column' alignItems='center' bg='blu-e' >
+            <Box display='flex' flexDirection='column' alignItems='center' >
               
-              <Box maxW='lg' w='full' display='flex' justifyContent='center' bg='todoDark'>
-              
+              <Box maxW='lg' w='full' display='flex' justifyContent='center' 
+                    bg={bgForm} border={borderColor}>
+                    
                 <Input as='input' type="text" name="inputTask" isDisabled={isSubmitting} 
-                      placeholder="Nueva tarea" bg='todoLight' 
-                      fontWeight='400' p={7} rounded='none' border='none' 
-                      focusBorderColor="transparent" maxW='md' ref={inputRef}
+                      placeholder="Nueva tarea" bg='todoLight'
+                      fontWeight='400' p={7} rounded='none'  maxW='md' ref={inputRef}
+                      _placeholder={{ color:'gray.400' }}
+                      _focusVisible={{ boxShadow: 'none'}}
+                      color='blackAlpha.800'
                       onChange={handleChange} value={values.inputTask} />
                 <Box display='flex'>
                   <motion.div whileTap={{scale:0.9}}>
                     <Button type='submit' isLoading={isSubmitting} isDisabled={isSubmitting} 
+                            borderWidth='1px 1px 1px 0px' textTransform='uppercase'
                             color='todoDark' textDecoration='none' bg='todoGreen' rounded='none' 
                             fontWeight='400' _active={{color: 'todoDark'}} _hover={{color: 'todoDark'}}
                             px={2} h='full'onClick={handleSubmit}>Agregar</Button>

@@ -3,8 +3,8 @@ import '@fontsource/roboto';
 const Header = () => {
   return(
     <Box as="header" bg='todoBgHeader' h='64px' 
-          display='flex' alignItems='center'
-          boxShadow='xl'>
+          display='flex' position='sticky' alignItems='center'
+          boxShadow='todoShadow'>
       <Container display='flex' justifyContent='center'>
       <Heading 
           fontFamily='Roboto,sans-serif' 

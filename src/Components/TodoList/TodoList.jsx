@@ -1,15 +1,21 @@
-import { Box, Grid, GridItem, Text,  Modal, ModalOverlay, ModalBody, ModalContent, useDisclosure } from "@chakra-ui/react"
+import { Box, Grid, GridItem, Text,  Modal, ModalOverlay, ModalBody, ModalContent, useDisclosure, useColorModeValue } from "@chakra-ui/react"
 import { AnimatePresence, motion } from "framer-motion"
 import { TodoItem } from "../TodoItem/TodoItem"
 import { useState } from "react"
 
 const ConfirmModal = ({isOpen,onClose,deleteTask,task}) => {
+
+  const bgOverlay = useColorModeValue('blackAlpha.200','blackAlpha.600')
+  const bgModal = useColorModeValue('todoLight','todoDark')
+  const fontColorModal = useColorModeValue('todoDark','todoLight')
+
   return (
     <>
       {task && 
         <Modal onClose={onClose} isOpen={isOpen} isCentered>
-          <ModalOverlay backdropFilter='blur(3px)'/>
-          <ModalContent bg='todoBgHeader' color='todoLight' mx={4} rounded='none'>
+          <ModalOverlay backdropFilter='blur(3px)' bg={bgOverlay}/>
+          <ModalContent bg={bgModal} color={fontColorModal}
+                        mx={4} rounded='none'>
             <ModalBody p={0}  border='2px solid #fc524c'>
             <Grid templateColumns='repeat(6,1fr)' alignItems='center'>
               <GridItem colSpan={5}>
@@ -20,13 +26,10 @@ const ConfirmModal = ({isOpen,onClose,deleteTask,task}) => {
               style={{display:'block',height:'100%',width:'100%',outline:'none'}}
               tabIndex='-1'
               >
-                <Box cursor='pointer' bg='todoRed' 
-                      h='full' 
-                      display='flex' 
-                      alignItems='center'
-                      _focusVisible={{border:'none'}}
+                <Box cursor='pointer' bg='todoRed' h='full' display='flex' 
+                      alignItems='center' _focusVisible={{border:'none'}}
                           onClick={() => {deleteTask(task.id);onClose()}}
-                          color='todoLight' py={4} px={2}>Eliminar</Box>
+                          color='todoLight' py={4} px={2} textTransform='uppercase'>Eliminar</Box>
                 </motion.button>
               </GridItem>
             </Grid>
@@ -50,7 +53,7 @@ const TodoList = ({tasks,changeStatusTask,deleteTask}) => {
     setDelTask:setDelTask,
     changeStatusTask:changeStatusTask,
   }
-
+  
   return(
     <Box pb={6}>
           {/* <AnimatePresence mode='popLayout'> */}
@@ -59,14 +62,10 @@ const TodoList = ({tasks,changeStatusTask,deleteTask}) => {
             <TodoItem task={task} 
                       key={task.id} 
                       index={i} {...todoItemProp} />            
-            // <TodoItem task={task} key={task.id} taskRef={taskRef} index={i} 
-            // changeStatusTask={changeStatusTask}
-            // deleteTask={deleteTask}/>
-
-
           ) )}
           </AnimatePresence>
-          <ConfirmModal isOpen={isOpen} onClose={onClose} deleteTask={deleteTask} task={delTask} />
+          <ConfirmModal isOpen={isOpen} onClose={onClose} 
+                        deleteTask={deleteTask} task={delTask} />
         </Box>
   )
 }
