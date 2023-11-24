@@ -26,7 +26,7 @@ const shadows = {
 
 const config = {
   initialColorMode:'dark',
-  useSystemColorMode:true
+  // useSystemColorMode:true
 }
 
 const theme = extendTheme({colors,shadows,config})
