@@ -58,7 +58,6 @@ const Main = () => {
 
   const { toggleColorMode } = useColorMode();
   const bgMain = useColorModeValue('todoLight','todoDark')
-  console.log(bgMain)
   const bgToggleTheme = useColorModeValue('#6e6d6e30','todoGreen')
   const iconTheme = useColorModeValue(<IoMoon />,<IoSunny />)
 
