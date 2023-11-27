@@ -41,8 +41,6 @@ const ConfirmModal = ({isOpen,onClose,deleteTask,task}) => {
   )
 }
 
-
-
 const TodoList = ({tasks,changeStatusTask,deleteTask}) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -56,17 +54,16 @@ const TodoList = ({tasks,changeStatusTask,deleteTask}) => {
   
   return(
     <Box pb={6}>
-          {/* <AnimatePresence mode='popLayout'> */}
-          <AnimatePresence mode='sync'>
-          {tasks.map((task,i) => (
-            <TodoItem task={task} 
-                      key={task.id} 
-                      index={i} {...todoItemProp} />            
-          ) )}
-          </AnimatePresence>
-          <ConfirmModal isOpen={isOpen} onClose={onClose} 
-                        deleteTask={deleteTask} task={delTask} />
-        </Box>
+      <AnimatePresence mode='sync'>
+        {tasks.map((task,i) => (
+          <TodoItem task={task} 
+                    key={task.id} 
+                    index={i} {...todoItemProp} />            
+        ) )}
+      </AnimatePresence>
+      <ConfirmModal isOpen={isOpen} onClose={onClose} 
+                    deleteTask={deleteTask} task={delTask} />
+    </Box>
   )
 }
 

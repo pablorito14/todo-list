@@ -1,11 +1,10 @@
 import { Box,Container, useColorMode, useColorModeValue } from "@chakra-ui/react"
-import { useState,useEffect, useRef } from "react";
+import { useState,useEffect } from "react";
 import { FormAddTask } from "../FormAddTask/FormAddTask";
 import { TodoList } from "../TodoList/TodoList";
 import { Clock } from "../Clock/Clock";
-import { FaMoon } from "react-icons/fa6";
 import { IoMoon,IoSunny } from "react-icons/io5";
-
+ 
 const Main = () => {
 
   const [tasks,setTasks ] = useState([]);
@@ -13,28 +12,18 @@ const Main = () => {
   // const [darkMode,setDarkMode] = useState(true);
   
   useEffect(() => {
-    console.log('useEffect onload')
-
     const tasklist = JSON.parse(localStorage.getItem('taskList')) ?? [];
     setTasks(tasklist)
-
   },[])
   
   useEffect(() => {
-    console.log('useEffect update tasks')
-
     if(updateTaskList){
-      console.log('actualizar localstorage')
-      
       localStorage.setItem('taskList',JSON.stringify(tasks));
       setUpdateTaskList(false);
-    
     }
-
   },[tasks])
 
   const deleteTask = (id) => {
-    console.log('deleteTask')
     setUpdateTaskList(true);
     setTasks((tasks) => {
       return tasks.filter(t => t.id != id);
@@ -42,7 +31,6 @@ const Main = () => {
   }
 
   const changeStatusTask = (id) => {
-    console.log('changeStatusTask')
     setUpdateTaskList(true);
     setTasks(tasks => {
       const changeTasks = tasks.map(task => {
@@ -84,9 +72,9 @@ const Main = () => {
           </Box>
         </Box>
 
-        {/* <DateTime /> */}
+        {/* RELOJ */}
         <Clock />
-        {/* <DateTime /> */}
+        {/* RELOJ */}
 
         {/* TASKLIST */}
         <TodoList {...todoListProps} />

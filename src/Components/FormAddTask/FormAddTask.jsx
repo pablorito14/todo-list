@@ -1,4 +1,4 @@
-import { Box, Button, CloseButton, Input, Text, useColorMode, useColorModeValue, useToast } from '@chakra-ui/react';
+import { Box, Button, CloseButton, Input, Text, useColorModeValue, useToast } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import { motion} from 'framer-motion'
 import { useRef } from 'react';
@@ -8,11 +8,11 @@ const CustomToast = ({bg,error,toastIdRef,toast}) => {
     <Box position='fixed' left='0' bottom='4rem' w='full' 
           display='flex' justifyContent='center'>
 
-    <Box maxW='lg' color='white' p={3} w='full' bg={bg} 
+      <Box maxW='lg' color='white' p={3} w='full' bg={bg} 
         display='flex' alignItems='center' justifyContent='space-between'>
-      <Text>{error}</Text>
-      <CloseButton onClick={() => toastIdRef.current ? toast.close(toastIdRef.current) : null}  />
-    </Box>
+        <Text>{error}</Text>
+        <CloseButton onClick={() => toastIdRef.current ? toast.close(toastIdRef.current) : null}  />
+      </Box>
     </Box>
   )
 }
@@ -64,7 +64,6 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList}) => {
   };
 
   const submit = (values,{setSubmitting,resetForm}) => {
-    console.log('onsubmit')
     setTimeout(() => {
       
       const id = tasks.sort((t1,t2) => t2.id - t1.id)[0]?.id ?? 0;
@@ -83,9 +82,7 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList}) => {
   const borderColor = useColorModeValue('gray.200','transparent')
 
   return(
-    <Box 
-          position='fixed' bottom='0' left='0'  w='full' bg='todo-Dark'>
-      
+    <Box position='fixed' bottom='0' left='0'  w='full' bg='todo-Dark'>
       <Formik
         initialValues={{inputTask: ''}}
         validate={validate}
@@ -94,9 +91,7 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList}) => {
         >
         {({values,handleChange,handleSubmit,isSubmitting}) => (
                 
-          <form 
-          style={{width:'100%'}} 
-          onSubmit={handleSubmit} noValidate>
+          <form style={{width:'100%'}} onSubmit={handleSubmit} noValidate>
             <Box display='flex' flexDirection='column' alignItems='center' >
               
               <Box maxW='lg' w='full' display='flex' justifyContent='center' 

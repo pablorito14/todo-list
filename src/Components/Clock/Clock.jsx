@@ -1,7 +1,7 @@
 import { Box, Text, useColorMode } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-const Clock = ({darkMode}) => {
+const Clock = () => {
 
   const [dateNow,setTime] = useState(new Date())
   const { colorMode } = useColorMode();
@@ -18,7 +18,7 @@ const Clock = ({darkMode}) => {
   
   return(
     <Box display='flex' flexDirection='column' alignItems='center' py={10}>
-      <Text fontSize='6xl' fontWeight='300' color={colorMode === 'dark' ? 'clockfontDark' : 'clockfontLight'}>{time}</Text>
+      <Text fontSize='6xl'  fontWeight='200' color={colorMode === 'dark' ? 'clockfontDark' : 'clockfontLight'}>{time}</Text>
       <Text color='todoGray' fontSize='md'>{date}</Text>
     </Box>
     

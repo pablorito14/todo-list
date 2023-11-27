@@ -4,21 +4,15 @@ import { Header } from './Components/Header/Header'
 import { Main } from './Components/Main/Main'
 import { Footer } from './Components/Footer/Footer'
 import theme from './Theme'
-console.log(theme)
-
 
 function App() {
 
   return (
-    <ChakraProvider theme={theme}>
-      {/* <Box bg=''> */}
-      <Header />
-      <Main />
-      {/* <Footer /> */}
-
-      {/* </Box> */}
-    </ChakraProvider>
-    
+      <ChakraProvider theme={theme}>
+        <Header />
+        <Main />
+        {/* <Footer /> */}
+      </ChakraProvider>
   )
 }
 

@@ -2,7 +2,6 @@ import { Box, Grid, GridItem, Text, useColorModeValue } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 import { FaCircle, FaTrash } from "react-icons/fa6"
 
-
 const TodoItem = ({task,index,changeStatusTask,onOpen,setDelTask}) => {
 
   const borderGrid = useColorModeValue('todoBorderLight','todoBorderDark');
@@ -24,14 +23,12 @@ const TodoItem = ({task,index,changeStatusTask,onOpen,setDelTask}) => {
         </GridItem>
         
         <GridItem colSpan={6} textAlign='center'py={4} 
-                  onClick={() => changeStatusTask(task.id)} _hover={{cursor:'pointer'}}>
-          <Text color='todoGray'>{task.detail}</Text>
+                  onClick={() => changeStatusTask(task.id)} 
+                  _hover={{cursor:'pointer'}}>
+          <Text color='todoGray'textDecoration={task.complete && "line-through"}>{task.detail}</Text>
         </GridItem>
         <GridItem colSpan={1} display='flex' justifyContent='center' alignItems='center' 
-                  py={4} 
-                  color="todoGreen"
-                  // color={colorTrash}
-                  >
+                  py={4} color="todoGreen">
           <Box _focusVisible={{borderColor:'none'}} cursor='pointer'
                 onClick={() => {setDelTask(task);onOpen()}}><FaTrash /></Box>
         </GridItem>
