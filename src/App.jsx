@@ -7,7 +7,7 @@ import theme from './Theme'
 import {ChakraProvider, createLocalStorageManager} from '@chakra-ui/react'
 
 function App() {
-  const manager = createLocalStorageManager('color_mode_g')
+  const manager = createLocalStorageManager('todoList_color_mode_g')
   return (
       <ChakraProvider theme={theme} colorModeManager={manager}>
         <Header />
