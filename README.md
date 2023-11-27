@@ -1,10 +1,8 @@
 # Trabajo Integrador Final - Desarrollo en React JS
 
-<!-- --- -->
 ## Descripción del Proyecto
 Esta aplicación web desarrollada en React permite gestionar una lista de tareas de manera interactiva. La aplicación hace uso de componentes funcionales, el hook `useState`, el hook `useEffect`  y eventos para interactuar con el usuario.
 
-<!-- --- -->
 ## Componentes Funcionales Principales
 
 ### *Componente de Reloj (Clock)*
@@ -19,7 +17,6 @@ Representa individualmente una tarea. Muestra el nombre de la tarea y el estado 
 ### *Componente de Formulario (FormAddTask)*
 Contiene un formulario para agregar nuevas tareas. Utiliza el estado local para gestionar la entrada del usuario y envía la nueva tarea a la lista principal.
 
-<!-- --- -->
 ## Hooks de React
 
 ### *Hook `useState`*
@@ -32,21 +29,18 @@ Algunas de las utilizaciones del hook `useEffect`:
 - Actualizar las tareas persistentes en el `localstorage`
 - Generar el intervalo de actualización del reloj
 
-<!-- --- -->
 ## Interacción con el Usuario - Eventos
 
-### Eventos en Componente TodoItem
+### *Eventos en Componente TodoItem*
 Implementación de eventos que permiten al usuario interactuar con cada tarea, como marcar como completada o eliminar. 
 
 ### *Eventos en Componente FormAddTask*
 Implementación de eventos para gestionar la entrada del usuario y agregar nuevas tareas a la lista.
 
-<!-- --- -->
 ## DEMO
 ![demo-integrador-dark-mobile](https://i.imgur.com/gFuhbkJ.jpg)
 ### [Link demo](https://pablorito14.github.io/todo-list/)
 
-<!-- --- -->
 ## Recursos
 - [React v18.2.0](https://es.react.dev/)
 - [React Icons v4.12](https://react-icons.github.io/react-icons/)
@@ -54,7 +48,6 @@ Implementación de eventos para gestionar la entrada del usuario y agregar nueva
 - [Framer Motion v10.16.4](https://www.framer.com/motion/)
 - [Formik v2.4.5](https://formik.org/)
 
-<!-- --- -->
 ## Desarrolladores
 - Pablo Rito
 - Luis Orlando Salazar
