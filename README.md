@@ -47,7 +47,3 @@ Implementación de eventos para gestionar la entrada del usuario y agregar nueva
 - [Chakra-UI v2.8.2](https://chakra-ui.com/)
 - [Framer Motion v10.16.4](https://www.framer.com/motion/)
 - [Formik v2.4.5](https://formik.org/)
-
-## Desarrolladores
-- Pablo Rito
-- Luis Orlando Salazar
