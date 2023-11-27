@@ -38,8 +38,7 @@ Implementación de eventos que permiten al usuario interactuar con cada tarea, c
 Implementación de eventos para gestionar la entrada del usuario y agregar nuevas tareas a la lista.
 
 ## DEMO
-
-![demo-integrador-mobile](https://i.imgur.com/P3BFruB.jpg) ![demo-integrador-desktop](https://i.imgur.com/22bbFbl.jpg)
+![demo-integrador-mobile](https://i.imgur.com/CKDJYzS.png) ![demo-integrador-desktop](https://i.imgur.com/aw9Gc4o.png)
 ### [Link demo](https://pablorito14.github.io/todo-list/)
 
 ---
