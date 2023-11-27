@@ -26,6 +26,7 @@ const shadows = {
 
 const config = {
   initialColorMode:'dark',
+  localStoragePrefix:'adasda'
   // useSystemColorMode:true
 }
 

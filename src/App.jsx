@@ -1,14 +1,15 @@
-import {Box, ChakraProvider, extendTheme} from '@chakra-ui/react'
 import './App.css'
 import { Header } from './Components/Header/Header'
 import { Main } from './Components/Main/Main'
 import { Footer } from './Components/Footer/Footer'
 import theme from './Theme'
 
-function App() {
+import {ChakraProvider, createLocalStorageManager} from '@chakra-ui/react'
 
+function App() {
+  const manager = createLocalStorageManager('color_mode_g')
   return (
-      <ChakraProvider theme={theme}>
+      <ChakraProvider theme={theme} colorModeManager={manager}>
         <Header />
         <Main />
         {/* <Footer /> */}

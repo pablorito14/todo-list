@@ -12,13 +12,13 @@ const Main = () => {
   // const [darkMode,setDarkMode] = useState(true);
   
   useEffect(() => {
-    const tasklist = JSON.parse(localStorage.getItem('taskList')) ?? [];
+    const tasklist = JSON.parse(localStorage.getItem('taskList_g')) ?? [];
     setTasks(tasklist)
   },[])
   
   useEffect(() => {
     if(updateTaskList){
-      localStorage.setItem('taskList',JSON.stringify(tasks));
+      localStorage.setItem('taskList_g',JSON.stringify(tasks));
       setUpdateTaskList(false);
     }
   },[tasks])
@@ -58,6 +58,7 @@ const Main = () => {
 
   const { toggleColorMode } = useColorMode();
   const bgMain = useColorModeValue('todoLight','todoDark')
+  console.log(bgMain)
   const bgToggleTheme = useColorModeValue('#6e6d6e30','todoGreen')
   const iconTheme = useColorModeValue(<IoMoon />,<IoSunny />)
 
