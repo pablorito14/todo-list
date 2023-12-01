@@ -7,10 +7,10 @@ import '@fontsource/roboto';
 
 const CustomToast = ({bg,error,toastIdRef,toast}) => {
   return (
-    <Box position='fixed' top='1rem' px={2} left={0}  w='full' 
+    <Box position='fixed' top='1rem' px={4} left={0}  w='full' 
           display='flex' justifyContent='center'>
 
-      <Box maxW='lg' color='white' p={3} w='full' bg={bg} 
+      <Box maxW='lg' color='white' p={3} w='full' bg={bg}  borderColor={bg} borderWidth='1px'
         display='flex' alignItems='center' justifyContent='space-between'>
         <Text>{error}</Text>
         <CloseButton onClick={() => toastIdRef.current ? toast.close(toastIdRef.current) : null}  />
@@ -66,7 +66,8 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList,formAddTaskModal,task}) =
   const toast = useToast({
     position: 'top',
     isClosable:true,
-    duration:20000000,
+    duration:30000000,
+    
   })
   
   
@@ -189,17 +190,18 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList,formAddTaskModal,task}) =
   }
 
   return(
-    <Box position='fixed' bottom='0' left='0'  w='full' bg='todo-Dark'>
+  <>
+    {/* <Box position='fix-ed' bottom='0' left='0'  w='full' bg='todo-Dark'> */}
       {/* icono */}
       {/* <ButtonFormAddTask onOpen={onOpen}/> */}
 
       {/* NEW FORM IN MODAL */}
       {formAddTaskModal.isOpen  && <>
         
-        <Modal onClose={formAddTaskModal.onClose} isOpen={formAddTaskModal.isOpen} isCentered>
+        <Modal onClose={formAddTaskModal.onClose} isOpen={formAddTaskModal.isOpen} isCentered->
           <ModalOverlay backdropFilter='blur(3px)' bg={bgOverlay}/>
           
-          <ModalContent mx={4} rounded='none'>
+          <ModalContent mx={4} rounded='none' mt={20}>
             <ModalBody p={0}  borderWidth='1px' borderColor='todoGreen' bg={bgModal} color={fontColorModal}>
             
               <Formik
@@ -277,7 +279,8 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList,formAddTaskModal,task}) =
         </Modal>
         </>
       }
-    </Box>
+    {/* </Box> */}
+  </>
   )
 }
 
