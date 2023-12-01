@@ -73,6 +73,7 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList,formAddTaskModal,task}) =
   
   const validate = (values) => {
     // console.log(values)
+    console.log(isNaN(new Date(values.date)))
     // console.log(!!task)
     let errors = {};
     toast.closeAll();
@@ -90,7 +91,18 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList,formAddTaskModal,task}) =
       })
     }
 
-
+    if(isNaN(new Date(values.date))){
+      errors = {
+        message: 'Por favor ingrese una fecha valida',
+        bg: 'todoRed'
+      }
+      toastIdRef.current = toast({
+        render: () => (
+          <CustomToast bg='todoRed' error={errors.message}
+                      toastIdRef={toastIdRef} toast={toast}/>
+        )
+      })
+    }
 
     const indexTask = tasks.findIndex(t => {
         if(task){
