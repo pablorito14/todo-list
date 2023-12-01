@@ -26,8 +26,6 @@ const shadows = {
 
 const config = {
   initialColorMode:'dark',
-  localStoragePrefix:'adasda'
-  // useSystemColorMode:true
 }
 
 const theme = extendTheme({colors,shadows,config})

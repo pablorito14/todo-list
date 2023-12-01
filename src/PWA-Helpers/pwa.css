@@ -1,0 +1,63 @@
+:root{
+  --todoRed: #fc524c;
+  --todoGreen:#00f9b6;
+  --todoLight:#fdfdfd;
+  --todoDark:#2f313a;
+}
+
+.pwaContainer{
+  backdrop-filter: blur(2px);
+}
+
+.pwaPopup{
+  background-color: var(--todoDark);
+  border-radius: 0;
+}
+
+.pwaTitle{
+  color: var(--todoGreen);
+}
+
+.pwaCloseButton:focus{
+  box-shadow: none !important;
+}
+
+.pwaCloseButton:hover{
+  color: var(--todoGreen);
+}
+
+.pwaHtmlContainer{
+  color: var(--todoLight) !important;
+}
+
+.pwaConfirmButton{
+  border-radius: 0 !important;
+  background-color: var(--todoGreen) !important;
+  color: var(--todoDark) !important;
+}
+
+.pwaConfirmButton:focus{
+  box-shadow: none !important;
+}
+
+.pwaDenyButton{
+  border-radius: 0 !important;
+  background-color: var(--todoRed) !important;
+  color: var(--todoLight) !important;
+}
+
+.pwaDenyButton:focus{
+  box-shadow: none !important;
+}
+
+
+.pwaTimeProgressBar{
+  background-color: var(--todoGreen);
+}
+
+.swal2-timer-progress-bar-container{
+  border-radius: 0px !important;
+  /* color: #00FF00;
+  color: #FF0000;
+  color: #e8ebf2; */
+}

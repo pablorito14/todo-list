@@ -1,0 +1,21 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_6">
+   <rect stroke="#6e6d6e" stroke-width="2" rx="30" id="svg_3" height="104" width="473.00002" y="61.00001" x="19.5" fill="#2f313a"/>
+   <ellipse stroke="#6e6d6e" ry="25.5" rx="25.40909" id="svg_4" cy="113.00001" cx="58.77932" stroke-width="0" fill="#fc524c"/>
+   <rect stroke="#6e6d6e" rx="20" id="svg_5" height="35" width="357.68183" y="95.50002" x="102.56819" stroke-width="2" fill="#6e6d6e"/>
+  </g>
+  <g id="svg_16">
+   <rect stroke="#6e6d6e" stroke-width="2" rx="30" id="svg_11" height="104" width="473.00002" y="354.00001" x="20.5" fill="#2f313a"/>
+   <ellipse stroke="#6e6d6e" ry="25.5" rx="25.40909" id="svg_12" cy="406.00001" cx="58.77932" stroke-width="0" fill="#00f9b6"/>
+   <rect stroke="#6e6d6e" rx="20" id="svg_13" height="35" width="357.68183" y="388.50002" x="102.56819" stroke-width="2" fill="#6e6d6e"/>
+  </g>
+  <g id="svg_17">
+   <rect stroke="#6e6d6e" stroke-width="2" rx="30" id="svg_7" height="104" width="473.00002" y="205.00001" x="19.5" fill="#2f313a"/>
+   <ellipse stroke="#6e6d6e" ry="25.5" rx="25.40909" id="svg_8" cy="257.00001" cx="58.77932" stroke-width="0" fill="#00f9b6"/>
+   <rect stroke="#6e6d6e" rx="20" id="svg_9" height="35" width="357.68183" y="239.50002" x="102.56819" stroke-width="2" fill="#6e6d6e"/>
+  </g>
+ </g>
+</svg>
