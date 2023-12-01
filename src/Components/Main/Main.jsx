@@ -31,6 +31,19 @@ const Main = () => {
   
   useEffect(() => {
     const tasklist = JSON.parse(localStorage.getItem('todoList')) ?? [];
+
+    if(tasklist){
+      tasklist.sort((t1,t2) => {
+        if(t1.date < t2.date){
+          return -1;
+        } else if(t1.date > t2.date){
+          return 1;
+        }
+
+        return 0;
+      })
+    }
+
     setTasks(tasklist)
   },[])
   

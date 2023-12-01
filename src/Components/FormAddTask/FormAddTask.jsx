@@ -148,9 +148,9 @@ const FormAddTask = ({tasks,setTasks,setUpdateTaskList,formAddTaskModal,task}) =
       }
 
       updatedTasks.sort((t1,t2) => {
-        if(t1.date > t2.date){
+        if(t1.date < t2.date){
           return -1;
-        } else if(t1.date < t2.date){
+        } else if(t1.date > t2.date){
           return 1;
         }
 
