@@ -1,4 +1,4 @@
-import { Box,Container, Link, useColorMode, useColorModeValue } from "@chakra-ui/react"
+import { Box,Container, useColorMode, useColorModeValue } from "@chakra-ui/react"
 import { AddDelButtons } from '../AddDelButtons/AddDelButtons'
 import { TodoList } from "../TodoList/TodoList";
 import { ConfirmModal } from '../ConfirmModal/ConfirmModal';
@@ -6,7 +6,6 @@ import { Clock } from "../Clock/Clock";
 import { IoMoon,IoSunny } from "react-icons/io5";
 import { useFunctionContext } from "../../Providers/TaskProvider";
 import { FormModal } from "../FormModal/FormModal";
-import { FaMugHot } from "react-icons/fa6";
 
 const ButtonColorMode = () => {
   const { toggleColorMode } = useColorMode();
