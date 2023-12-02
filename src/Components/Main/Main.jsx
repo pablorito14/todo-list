@@ -1,10 +1,12 @@
-import { Box,Container, useColorMode, useColorModeValue, useDisclosure } from "@chakra-ui/react"
-import { useState,useEffect } from "react";
-import { ButtonFormAddTask, FormAddTask } from "../FormAddTask/FormAddTask";
-import { ConfirmModal, TodoList } from "../TodoList/TodoList";
+import { Box,Container, Link, useColorMode, useColorModeValue } from "@chakra-ui/react"
+import { AddDelButtons } from '../AddDelButtons/AddDelButtons'
+import { TodoList } from "../TodoList/TodoList";
+import { ConfirmModal } from '../ConfirmModal/ConfirmModal';
 import { Clock } from "../Clock/Clock";
 import { IoMoon,IoSunny } from "react-icons/io5";
-
+import { useFunctionContext } from "../../Providers/TaskProvider";
+import { FormModal } from "../FormModal/FormModal";
+import { FaMugHot } from "react-icons/fa6";
 
 const ButtonColorMode = () => {
   const { toggleColorMode } = useColorMode();
@@ -22,110 +24,19 @@ const ButtonColorMode = () => {
 
 const Main = () => {
 
-  const [tasks,setTasks ] = useState([]);
-  const [updateTaskList,setUpdateTaskList] = useState(false);
-  const [task,setTask] = useState(null);
-
-  const formAddTaskModal = useDisclosure();
-  const confirmModal = useDisclosure()
-  
-  useEffect(() => {
-    const tasklist = JSON.parse(localStorage.getItem('todoList')) ?? [];
-
-    if(tasklist){
-      tasklist.sort((t1,t2) => {
-        if(t1.date < t2.date){
-          return -1;
-        } else if(t1.date > t2.date){
-          return 1;
-        }
-
-        return 0;
-      })
-    }
-
-    setTasks(tasklist)
-  },[])
-  
-  useEffect(() => {
-    if(updateTaskList){
-      localStorage.setItem('todoList',JSON.stringify(tasks));
-      setUpdateTaskList(false);
-    }
-  },[tasks])
-
-  const deleteTask = (id) => {
-    if(id === -1){
-      console.log('buscar tareas completadas')
-      const taskListIncomplete = tasks.filter(t => !t.complete)
-      setTasks(taskListIncomplete)
-    } else {
-      setTasks((tasks) => {
-        return tasks.filter(t => t.id != id);
-      })
-    }
-    setUpdateTaskList(true);
-  }
-
-  const changeStatusTask = (id) => {
-    setUpdateTaskList(true);
-    setTasks(tasks => {
-      const changeTasks = tasks.map(task => {
-        if(task.id == id){
-          const newTask = {...task,complete:!task.complete};
-          return newTask;
-        }
-        return task
-      })
-      return changeTasks;
-    });
-  }
-
-  const updateTask = (id) => {
-    console.log('actualizar tareas +'+id)
-  }
-
-  const formAddTaskProps = {
-    tasks:tasks, 
-    setTasks:setTasks,
-    setUpdateTaskList:setUpdateTaskList,
-    updateTask: updateTask
-  }
-
-  const todoListProps = {
-    tasks:tasks, 
-    changeStatusTask:changeStatusTask,
-    deleteTask:deleteTask,
-    updateTask: updateTask
-  }
-
+  const {formAddTaskModal,confirmModal} = useFunctionContext();
   const bgMain = useColorModeValue('todoLight','todoDark')
 
   return(
     <Box bg={bgMain} minH='calc(100dvh - 64px)'>
       <Container pb={10}>
-
         <ButtonColorMode />
-
-        {/* RELOJ */}
         <Clock />
-        {/* RELOJ */}
-
-        {/* TASKLIST */}
-        <TodoList {...todoListProps} setTask={setTask} formAddTaskModal={formAddTaskModal} confirmModal={confirmModal}/>
-        {/* TASKLIST */}
-
-        {/* BOTONES ABRIR FORM Y ELIMINAR TODO */}
-        <ButtonFormAddTask formAddTaskModal={formAddTaskModal} confirmModal={confirmModal} deleteTask={deleteTask} setTask={setTask} hasTasksComplete={tasks.some(t => t.complete)}/>
-        {/* BOTONES ABRIR FORM Y ELIMINAR TODO */}
+        <TodoList/>
+        <AddDelButtons />
         
-        {/* MODAL CONFIRMAR ELIMINACION */}
-        {confirmModal.isOpen && <ConfirmModal confirmModal={confirmModal} task={task}  deleteTask={deleteTask}/>}
-        {/* MODAL CONFIRMAR ELIMINACION
-
-        {/* FORMULARIO */}
-        {formAddTaskModal.isOpen && <FormAddTask formAddTaskModal={formAddTaskModal} task={task} {...formAddTaskProps}/>}
-        {/* FORMULARIO */}
+        {confirmModal.isOpen && <ConfirmModal/>}
+        {formAddTaskModal.isOpen && <FormModal />}
 
       </Container>
     </Box>

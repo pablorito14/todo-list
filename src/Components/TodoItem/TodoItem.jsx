@@ -1,34 +1,36 @@
 import { Box, Grid, GridItem, Text, useColorModeValue } from "@chakra-ui/react"
 import { motion } from "framer-motion"
-import { useState } from "react";
 import { FaCircle, FaTrash, FaPen } from "react-icons/fa6"
+import { useFunctionContext } from "../../Providers/TaskProvider";
+import { useState } from "react";
+import { useEffect } from "react";
 
-const TodoItem = ({task,index,changeStatusTask,setDelTask,updateTask,confirmModal,formAddTaskModal,setTask}) => {
+const TodoItem = ({task,index}) => {
+
+  const [taskDate,setTaskDate] = useState();
+  const {changeStatusTask,setTask,formAddTaskModal,confirmModal} = useFunctionContext();
 
   const borderGrid = useColorModeValue('todoBorderLight','todoBorderDark');
   const bgGrid = useColorModeValue('todoLight','todoDark')
-  // const colorTrash = useColorModeValue('todoGreenLight','todoGreen')
-  
-  // const [updateTask,setUpdateTask] = useState(null);
 
-  const dateToString = () => {
-    const now = new Date(task.date)
-    const date = Intl.DateTimeFormat('es-AR',{year:'numeric',month:'numeric',day:'numeric'}).format(now);
-    const time = Intl.DateTimeFormat('es-AR', {hour: 'numeric',minute:'numeric' }).format(now);
-    const weekday = Intl.DateTimeFormat('es-AR', {weekday: 'long' }).format(now);
-    return `${date} (${weekday}) ${time}`;
-  }
+  useEffect(() => {
+      const now = new Date(task.date)
+      const date = Intl.DateTimeFormat('es-AR',{year:'numeric',month:'numeric',day:'numeric'}).format(now);
+      const time = Intl.DateTimeFormat('es-AR', {hour: 'numeric',minute:'numeric' }).format(now);
+      const weekday = Intl.DateTimeFormat('es-AR', {weekday: 'long' }).format(now);
+      setTaskDate(`${date} (${weekday}) ${time}`)
+  },[])
 
-  const handleChangeStatusTask = (id) => {
+  const handleChangeStatusTask = () => {
     changeStatusTask(task.id);
   }
 
-  const handleUpdateTask = (id) =>{
+  const handleUpdateTask = () =>{
     setTask(task);
     formAddTaskModal.onOpen();
   }
 
-  const handleDeleteTask = (id) => {
+  const handleDeleteTask = () => {
     setTask(task);
     confirmModal.onOpen();
   }
@@ -43,20 +45,19 @@ const TodoItem = ({task,index,changeStatusTask,setDelTask,updateTask,confirmModa
             boxShadow='todoShadow' bg={bgGrid} borderRadius='1rem'>
         
         <GridItem colSpan={2} display='flex' justifyContent='center' alignItems='center' 
-                  py={2} 
-                  // onClick={() => changeStatusTask(task.id)} 
-                  onClick={handleChangeStatusTask}
-                  _hover={{cursor:'pointer'}} 
+                  py={2} onClick={handleChangeStatusTask} _hover={{cursor:'pointer'}} 
                   color={(task.complete) ? 'todoGreen' : 'todoRed'}>
             <FaCircle size={25} />
         </GridItem>
         
-        <GridItem colSpan={8} textAlign='center'py={2} 
-                  // onClick={() => changeStatusTask(task.id)} 
-                  onClick={handleChangeStatusTask}
+        <GridItem colSpan={8} textAlign='center'py={2} onClick={handleChangeStatusTask}
                   _hover={{cursor:'pointer'}}>
-          <Text color='todoGray'textDecoration={task.complete && "line-through"}>{task.detail}</Text>
-          <Text color='todoGray' fontSize="small" textDecoration={task.complete && "line-through"}>{dateToString()}</Text>
+          <Text color='todoGray'textDecoration={task.complete && "line-through"}>
+            {task.detail}
+          </Text>
+          <Text color='todoGray' fontSize="small" textDecoration={task.complete && "line-through"}>
+            {taskDate}
+          </Text>
         </GridItem>
 
         <GridItem colSpan={1} display='flex' justifyContent='center' alignItems='center' 
@@ -67,14 +68,11 @@ const TodoItem = ({task,index,changeStatusTask,setDelTask,updateTask,confirmModa
 
         <GridItem colSpan={1} display='flex' justifyContent='center' alignItems='center' 
                   py={4} color="todoGray">
-          <Box _focusVisible={{borderColor:'none'}} cursor='pointer'
-                // onClick={() => {setDelTask(task);confirmModal.onOpen()}}
-                onClick={handleDeleteTask}
-                ><FaTrash /></Box>
+          <Box _focusVisible={{borderColor:'none'}} cursor='pointer' onClick={handleDeleteTask}>
+            <FaTrash />
+          </Box>
         </GridItem>
-      
       </Grid>
-      
     </motion.div>
   )
 }
